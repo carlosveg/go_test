@@ -57,3 +57,21 @@ func TelefonoRegistrado(phone string, users map[string]models.User) bool {
 	}
 	return false
 }
+
+func ValidateLogin(credentials models.Credentials) (bool, []string) {
+	var emptyFields []string
+
+	if credentials.UsuarioCorreo == "" {
+		emptyFields = append(emptyFields, "usuario")
+	}
+
+	if credentials.Password == "" {
+		emptyFields = append(emptyFields, "usuario")
+	}
+
+	if len(emptyFields) > 0 {
+		return false, emptyFields
+	}
+
+	return true, nil
+}
