@@ -2,6 +2,8 @@ package data
 
 import "github.com/carlosveg/go_test/models"
 
+// Datos dummy para tener precargados algunos registros
+// El map se usa en el servicio para agregar y consultar
 var Users = map[string]models.User{
 	"test1@test.com": {
 		Username: "usuario1",
