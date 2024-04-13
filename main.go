@@ -10,6 +10,7 @@ func main() {
 
 	app.Get("/", services.ListUsers)
 	app.Post("/", services.AddUser)
+	app.Post("/login", services.Login)
 
 	app.Listen(":3000")
 }
