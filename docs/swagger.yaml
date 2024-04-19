@@ -1,0 +1,79 @@
+definitions:
+  models.Credentials:
+    properties:
+      contrasena:
+        type: string
+      usuario_correo:
+        type: string
+    type: object
+  models.User:
+    properties:
+      contrasena:
+        type: string
+      correo:
+        type: string
+      telefono:
+        type: string
+      usuario:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: Prueba GOLANG
+  termsOfService: http://swagger.io/terms/
+  title: Prueba GO
+  version: "1.0"
+paths:
+  /:
+    get:
+      description: Listing users
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.User'
+            type: array
+      summary: Listing users
+      tags:
+      - users
+    post:
+      consumes:
+      - application/json
+      description: Adding user
+      parameters:
+      - description: Datos usuario
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Adding user
+      tags:
+      - users
+  /login:
+    post:
+      description: Logging user
+      parameters:
+      - description: usuario o correo
+        in: body
+        name: Credentials
+        required: true
+        schema:
+          $ref: '#/definitions/models.Credentials'
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Logging user
+      tags:
+      - users
+swagger: "2.0"

@@ -12,6 +12,18 @@ import (
 // Función que agrega un usuario validando cada campo
 // En caso de error muestra el respectivo mensaje
 // En caso de éxito registra al usuario y lo retorna con un códido de estado 200
+
+// AddUser Adding user
+//
+//	@Summary		Adding user
+//	@Description	Adding user
+//	@Tags			users
+//	@Param			User	body		models.User	true	"Datos usuario"
+//	@Accept			json
+//	@Produce		json
+//	@Success		200	{object}	models.User
+//
+//	@Router			/ [post]
 func AddUser(c *fiber.Ctx) error {
 	var response models.Response
 	user := models.User{}
@@ -61,6 +73,15 @@ func AddUser(c *fiber.Ctx) error {
 }
 
 // Función de prueba para validar que se guarden correctamente los usuarios
+
+// AddUser Listing users
+//
+//	@Summary		Listing users
+//	@Description	Listing users
+//	@Tags			users
+//	@Success		200	{array}	models.User
+//
+//	@Router			/ [get]
 func ListUsers(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(data.Users)
 }
@@ -69,6 +90,18 @@ func ListUsers(c *fiber.Ctx) error {
 // Un usuario puede loggearse con su correo o su usuario
 // En caso de error o campos faltantes muestra el respectivo mensaje
 // En caso de éxito registra al usuario y lo retorna con un códido de estado 200
+
+// AddUser Logging user
+//
+//	@Summary		Logging user
+//	@Description	Logging user
+//	@Tags			users
+//
+//	@Param			Credentials	body		models.Credentials	true	"usuario o correo"
+//
+//	@Success		200				{string}	models.TokenResponse
+//
+//	@Router			/login [post]
 func Login(c *fiber.Ctx) error {
 	var response models.Response
 	var user models.User
